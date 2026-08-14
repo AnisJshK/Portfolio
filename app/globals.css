@@ -67,6 +67,7 @@
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 0;
     background: radial-gradient(
       ellipse 80% 60% at 50% 0%,
       transparent 0%,
@@ -74,7 +75,16 @@
     );
     pointer-events: none;
   }
+   .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
 }
+
 
 :root {
   --background: oklch(1 0 0);
