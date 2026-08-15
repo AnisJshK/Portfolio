@@ -112,13 +112,15 @@ export default function Skills() {
       aria-labelledby="skills-heading"
       className="w-full max-w-7xl mx-auto flex flex-col mt-28 lg:mt-12 pt-8 border-t border-slate-800/60 relative z-10 scroll-mt-24"
     >
-      <h2
+     <div className="text-center">
+       <h2
         id="skills-heading"
         className="text-cyan-400 text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-10"
       >
         <ScaleLetterText text="Skills & Tech Stack" />
       </h2>
 
+     </div>
       {/* Frontend */}
       <div className="mb-8">
         <h3 className="text-xl font-semibold text-gray-200 mb-3">Frontend</h3>

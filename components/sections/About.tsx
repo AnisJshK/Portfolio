@@ -66,8 +66,8 @@ export default function About() {
             username="Shaikh-Anis"
             commands={[
               "git clone https://github.com/AnisJshk/Portfolio.git",
-              "cd portfolio && npm install",
-              "npm run build",
+              "cd portfolio && bun install",
+              "bun run build",
               "vercel --prod",
             ]}
             outputs={{
@@ -75,8 +75,13 @@ export default function About() {
                 "Cloning into 'portfolio'...",
                 "remote: Enumerating objects: 142, done.",
               ],
-              1: ["added 342 packages, audited 343 packages in 4s"],
+              1: [
+                "bun install v1.1.0",
+                "Saved lockfile. Built dependencies: 4",
+                "Checked 342 packages, installed 342 packages in 480ms",
+              ],
               2: [
+                "$ next build",
                 "▲ Next.js 15",
                 "- Collecting page data...",
                 "- Generating static pages (5/5)",
@@ -88,7 +93,7 @@ export default function About() {
               ],
             }}
             typingSpeed={40}
-            delayBetweenCommands={900}
+            delayBetweenCommands={800}
           />
         </div>
       </div>
@@ -100,24 +105,33 @@ export default function About() {
         className="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-10 mt-28 lg:mt-12 pt-8 border-t border-slate-800/60  relative z-10 scroll-mt-24"
       >
         {/* Left Column: Heading + Paragraphs */}
-        <div className="flex-1 flex flex-col gap-8 max-w-2xl">
+        <div className="flex-1 flex flex-col gap-8 max-w-2xl ">
+          <div className="text-center">
+
           <h2
             id="about-heading"
             className="text-cyan-400 text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight"
-          >
+            >
             <ScaleLetterText text="About Me" />
           </h2>
+            </div>
 
           <div className="flex flex-col gap-5 text-zinc-100 text-lg sm:text-xl leading-relaxed font-normal">
             <p className="text-zinc-200 drop-shadow-sm">
-              I'm a developer focused on building practical, reliable web applications with a strong interest in backend engineering.
+              I'm a developer focused on building practical, reliable web
+              applications with a strong interest in backend engineering.
             </p>
             <p className="text-zinc-200 drop-shadow-sm">
-              I work with Node.js, Express, MongoDB, React, TypeScript, and Nextjs, and I enjoy building everything from REST APIs and authentication systems to real-time applications. I'm also exploring Docker, CI/CD, and DevOps to better understand how applications are built, deployed, and maintained. <br/>
+              I work with Node.js, Express, MongoDB, React, TypeScript, and
+              Nextjs, and I enjoy building everything from REST APIs and
+              authentication systems to real-time applications. I'm also
+              exploring Docker, CI/CD, and DevOps to better understand how
+              applications are built, deployed, and maintained. <br />
               My curiosity will always make me learn new things in the industry.
             </p>
             <p className="text-zinc-200 drop-shadow-sm">
-              I don't just want to learn technologies—I want to understand how they work together to build useful software.
+              I don't just want to learn technologies—I want to understand how
+              they work together to build useful software.
             </p>
           </div>
         </div>

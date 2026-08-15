@@ -447,7 +447,7 @@ export function Terminal({
         {/* Terminal Content */}
         <div
           ref={contentRef}
-          className="no-visible-scrollbar h-80 overflow-y-auto p-4 font-mono"
+          className="no-visible-scrollbar h-100 overflow-y-auto p-4 font-mono"
         >
           {lines.map((line, i) => (
             <div key={i} className="leading-relaxed whitespace-pre-wrap">
