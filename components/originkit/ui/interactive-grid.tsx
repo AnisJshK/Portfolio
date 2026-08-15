@@ -1,34 +1,40 @@
 "use client";
 
-import { memo, useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import {
+  memo,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 
 export interface SkillItem {
-  src: string;
   name: string;
 }
 
 const DEFAULTS = {
-  padding: "20px 0px",
+  padding: "10px 0px",
   columns: 5,
-  gap: 12,
-  rounded: 12,
-  logoScale: 3,
-  cardFill: "#0a0a0a",
-  cardBorder: "#222222",
+  gap: 10,
+  rounded: 8,
+  cardFill: "#0f172a66", // slate-900/40
+  cardBorder: "#1e293b", // slate-800
   shadow: false,
-  cardShadow: "rgba(217, 251, 232, 0.5)",
+  cardShadow: "rgba(6, 182, 212, 0.4)",
   glow: true,
-  glowStart: "rgba(56, 239, 125, 0.3)",
-  glowEnd: "#38EF7D",
-  glowIntensity: 40,
+  glowStart: "rgba(6, 182, 212, 0.3)", // Cyan glow start
+  glowEnd: "#06b6d4", // Cyan glow end
+  glowIntensity: 45,
   perspective: 1000,
   rotateX: 0,
   rotateY: 0,
 };
 
-const MAX_GLOW_BLUR = 16;
+const MAX_GLOW_BLUR = 14;
 const DURATION = 200;
-const LEAVE_DELAY = 200;
+const LEAVE_DELAY = 150;
 const NS = "framer-animate-grid";
 
 const CSS = `
@@ -40,23 +46,13 @@ const CSS = `
     2px 2px 5px var(--ag-shadow),
     3px 3px 10px var(--ag-shadow);
 }
-.${NS}-card img {
-  opacity: 0.8;
-  transition: all ${DURATION}ms ease-out;
-  shape-rendering: geometricPrecision;
-}
-.${NS}-card:hover img { 
-  opacity: 1; 
-  transform: scale(1.1);
-}
-
 .${NS}-small {
   transform: scale(1.02) translateZ(0);
 }
 .${NS}-big {
-  transform: scale(1.08) translateZ(15px);
+  transform: scale(1.06) translateZ(12px);
+  border-color: rgba(6, 182, 212, 0.4) !important;
 }
-
 .${NS}-glow-big {
   animation: ${NS}-glow 1.5s ease-in-out infinite alternate;
 }
@@ -79,7 +75,6 @@ interface InteractiveGridProps {
   columns?: number;
   gap?: number;
   rounded?: number;
-  logoScale?: number;
   cardFill?: string;
   cardBorder?: string;
   shadow?: boolean;
@@ -104,7 +99,6 @@ interface GridCardProps {
   cardFill: string;
   cardBorder: string;
   rounded: number;
-  logoPct: number;
   zIndex: number;
   onEnter: (i: number) => void;
 }
@@ -119,7 +113,6 @@ const GridCard = memo(function GridCard({
   cardFill,
   cardBorder,
   rounded,
-  logoPct,
   zIndex,
   onEnter,
 }: GridCardProps) {
@@ -141,45 +134,33 @@ const GridCard = memo(function GridCard({
       style={{
         position: "relative",
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        padding: "16px 10px",
-        gap: "10px",
+        padding: "10px 14px",
         background: cardFill,
         border: `1px solid ${cardBorder}`,
         borderRadius: rounded,
         boxSizing: "border-box",
         minWidth: 0,
-        minHeight: "110px",
+        minHeight: "44px", // Compact height for text tiles
         overflow: "visible",
         zIndex,
         cursor: "pointer",
       }}
     >
-      <img
-        src={item.src}
-        alt={item.name}
-        draggable={false}
-        style={{
-          width: `${logoPct}%`,
-          height: "40px",
-          objectFit: "contain",
-          display: "block",
-          margin: "0 auto",
-          userSelect: "none",
-          pointerEvents: "none",
-        }}
-      />
       <span
         style={{
-          color: "#E0E0E0",
-          fontSize: "0.85rem",
+          color: isBig ? "#67e8f9" : "#E0E0E0", // Lights up text cyan when hovered
+          fontSize: "0.875rem",
           fontWeight: 500,
           textAlign: "center",
           userSelect: "none",
           pointerEvents: "none",
           letterSpacing: "0.02em",
+          transition: "color 200ms ease",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
         }}
       >
         {item.name}
@@ -195,7 +176,6 @@ export default function InteractiveGrid(props: InteractiveGridProps) {
     columns = DEFAULTS.columns,
     gap = DEFAULTS.gap,
     rounded = DEFAULTS.rounded,
-    logoScale = DEFAULTS.logoScale,
     cardFill = DEFAULTS.cardFill,
     cardBorder = DEFAULTS.cardBorder,
     shadow = DEFAULTS.shadow,
@@ -251,11 +231,6 @@ export default function InteractiveGrid(props: InteractiveGridProps) {
     [glowIntensity]
   );
 
-  const logoPct = useMemo(
-    () => Math.min(10, Math.max(1, Math.round(logoScale))) * 20,
-    [logoScale]
-  );
-
   const gridStyle = useMemo(
     () =>
       ({
@@ -306,7 +281,6 @@ export default function InteractiveGrid(props: InteractiveGridProps) {
               cardFill={cardFill}
               cardBorder={cardBorder}
               rounded={rounded}
-              logoPct={logoPct}
               zIndex={isBig ? count + 1 : i + 1}
               onEnter={onEnter}
             />

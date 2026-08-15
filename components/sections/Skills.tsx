@@ -2,123 +2,42 @@
 
 import InteractiveGrid, { SkillItem } from "../originkit/ui/interactive-grid";
 import ScaleLetterText from "../ui/scale-letter-text";
-import expresslogo from "../../app/public/images/Express.png";
-import socketlogo from "../../app/public/images/Socket IO.jpg";
-import jwtlogo from "../../app/public/images/jwt.png";
-import vercellogo from "../../app/public/images/Vercel.jpg";
-import clerklogo from "../../app/public/images/clerk.png";
-import inngestlogo from "../../app/public/images/inngest.jpg";
-import turbologo from "../../app/public/images/turborepo.ico";
-import zodlogo from "../../app/public/images/zod.png";
-import cloudinarylogo from "../../app/public/images/cloudinary.png";
-import githublogo from "../../app/public/images/Github.jpg";
 
 const FRONTEND_SKILLS: SkillItem[] = [
-  {
-    name: "React.js",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
-  },
-  {
-    name: "Next.js",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
-  },
-  {
-    name: "HTML5",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
-  },
-  {
-    name: "CSS3",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
-  },
-  {
-    name: "Tailwind CSS",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
-  },
+  { name: "React.js" },
+  { name: "Next.js" },
+  { name: "HTML5" },
+  { name: "CSS3" },
+  { name: "Tailwind CSS" },
 ];
 
 const BACKEND_SKILLS: SkillItem[] = [
-  {
-    name: "Node.js",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg",
-  },
-  {
-    name: "Express.js",
-    src: expresslogo.src,
-  },
-  {
-    name: "REST APIs",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg",
-  },
-  {
-    name: "WebSockets",
-    src: socketlogo.src,
-  },
-  {
-    name: "JWT Auth",
-    src: jwtlogo.src,
-  },
+  { name: "Node.js" },
+  { name: "Express.js" },
+  { name: "REST APIs" },
+  { name: "WebSockets" },
+  { name: "JWT Auth" },
+  { name: "Bcrypt Hashing" },
 ];
 
 const DATABASE_SKILLS: SkillItem[] = [
-  {
-    name: "MongoDB",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
-  },
-  {
-    name: "Mongoose",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original.svg",
-  },
-  {
-    name: "PostgreSQL",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg",
-  },
-  {
-    name: "Prisma ORM",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg",
-  },
+  { name: "MongoDB" },
+  { name: "Mongoose" },
+  { name: "PostgreSQL" },
+  { name: "Prisma ORM" },
 ];
 
 const TOOLS_SKILLS: SkillItem[] = [
-  {
-    name: "Git",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-  },
-  {
-    name: "GitHub",
-    src: githublogo.src,
-  },
-  {
-    name: "Docker",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg",
-  },
-  {
-    name: "CI/CD",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
-  },
-  {
-    name: "Vercel",
-    src: vercellogo.src,
-  },
-  {
-    name: "Clerk Auth",
-    src: clerklogo.src,
-  },
-  {
-    name: "Inngest",
-    src: inngestlogo.src,
-  },
-  {
-    name: "Turborepo",
-    src: turbologo.src,
-  },
-  {
-    name: "Zod",
-    src: zodlogo.src,
-  },
-  {
-    name: "Cloudinary",
-    src: cloudinarylogo.src,
-  },
+  { name: "Git" },
+  { name: "GitHub" },
+  { name: "Docker" },
+  { name: "CI/CD" },
+  { name: "Vercel" },
+  { name: "Clerk Auth" },
+  { name: "Inngest" },
+  { name: "Turborepo" },
+  { name: "Zod" },
+  { name: "Cloudinary" },
 ];
 
 interface ToolExperience {
@@ -201,28 +120,28 @@ export default function Skills() {
       </h2>
 
       {/* Frontend */}
-      <div className="mb-10">
-        <h3 className="text-2xl font-semibold text-gray-200 mb-4">Frontend</h3>
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold text-gray-200 mb-3">Frontend</h3>
         <InteractiveGrid items={FRONTEND_SKILLS} columns={5} />
       </div>
 
       {/* Backend */}
-      <div className="mb-10">
-        <h3 className="text-2xl font-semibold text-gray-200 mb-4">Backend</h3>
-        <InteractiveGrid items={BACKEND_SKILLS} columns={5} />
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold text-gray-200 mb-3">Backend</h3>
+        <InteractiveGrid items={BACKEND_SKILLS} columns={6} />
       </div>
 
       {/* Databases */}
-      <div className="mb-10">
-        <h3 className="text-2xl font-semibold text-gray-200 mb-4">
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold text-gray-200 mb-3">
           Databases & ORMs
         </h3>
-        <InteractiveGrid items={DATABASE_SKILLS} columns={5} />
+        <InteractiveGrid items={DATABASE_SKILLS} columns={4} />
       </div>
 
       {/* Tools & Platforms */}
-      <div className="mb-10">
-        <h3 className="text-2xl font-semibold text-gray-200 mb-4">
+      <div className="mb-8">
+        <h3 className="text-xl font-semibold text-gray-200 mb-3">
           Tools, DevOps & Libraries
         </h3>
         <InteractiveGrid items={TOOLS_SKILLS} columns={5} />
@@ -230,7 +149,6 @@ export default function Skills() {
 
       {/* --- Production & Project Implementation Breakdown --- */}
       <div className="mt-12 pt-10 border-t border-slate-800/70">
-        {/* Section Sub-header */}
         <div className="flex flex-col gap-3 mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-mono w-fit">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
@@ -242,7 +160,10 @@ export default function Skills() {
           </h3>
 
           <p className="text-slate-400 text-base max-w-2xl">
-            Practical engineering breakdown showing which tools powers specific workflows across applications like <span className="text-cyan-400 font-medium">UrbanBasket</span> and <span className="text-cyan-400 font-medium">ShowTime</span>.
+            Practical engineering breakdown showing which tools powers specific
+            workflows across applications like{" "}
+            <span className="text-cyan-400 font-medium">UrbanBasket</span> and{" "}
+            <span className="text-cyan-400 font-medium">ShowTime</span>.
           </p>
         </div>
 
@@ -254,7 +175,6 @@ export default function Skills() {
               className="group relative flex flex-col justify-between p-6 rounded-xl bg-slate-900/40 border border-slate-800 hover:border-cyan-500/40 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-950/20"
             >
               <div>
-                {/* Header: Title + Category */}
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <h4 className="text-lg font-bold text-slate-100 group-hover:text-cyan-300 transition-colors">
                     {item.tool}
@@ -264,9 +184,10 @@ export default function Skills() {
                   </span>
                 </div>
 
-                {/* Used In Badges */}
                 <div className="flex flex-wrap items-center gap-1.5 mb-3">
-                  <span className="text-xs font-mono text-slate-400">Used in:</span>
+                  <span className="text-xs font-mono text-slate-400">
+                    Used in:
+                  </span>
                   {item.usedIn.map((proj) => (
                     <span
                       key={proj}
@@ -277,15 +198,15 @@ export default function Skills() {
                   ))}
                 </div>
 
-                {/* Use Case */}
                 <p className="text-sm text-slate-300 leading-relaxed mb-4">
                   {item.useCase}
                 </p>
               </div>
 
-              {/* Impact Footer */}
               <div className="pt-3 border-t border-slate-800/60 text-xs text-slate-400 leading-normal flex items-start gap-1.5">
-                <span className="text-cyan-400 font-semibold shrink-0">Impact:</span>
+                <span className="text-cyan-400 font-semibold shrink-0">
+                  Impact:
+                </span>
                 <span>{item.impact}</span>
               </div>
             </div>
