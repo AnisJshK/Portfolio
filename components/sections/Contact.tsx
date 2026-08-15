@@ -4,7 +4,15 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import emailjs from "@emailjs/browser";
 import ScaleLetterText from "../ui/scale-letter-text";
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaCopy, FaCheck } from "react-icons/fa";
+import {
+  FaLinkedin,
+  FaGithub,
+  FaEnvelope,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+  FaCopy,
+  FaCheck,
+} from "react-icons/fa";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +22,10 @@ const Contact = () => {
   });
   const [copied, setCopied] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState<{ type: "success" | "error" | ""; text: string }>({
+  const [statusMessage, setStatusMessage] = useState<{
+    type: "success" | "error" | "";
+    text: string;
+  }>({
     type: "",
     text: "",
   });
@@ -28,7 +39,9 @@ const Contact = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -52,7 +65,7 @@ const Contact = () => {
         },
         {
           publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!,
-        }
+        },
       );
 
       setStatusMessage({
@@ -72,7 +85,10 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="mt-20 pt-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pb-20">
+    <section
+      id="contact"
+      className="mt-20 pt-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto pb-20"
+    >
       {/* Section Header */}
       <div className="text-center mb-12">
         <h2
@@ -82,8 +98,32 @@ const Contact = () => {
           <ScaleLetterText text="Get In Touch" />
         </h2>
         <p className="text-slate-400 text-sm sm:text-base max-w-xl mx-auto">
-          Have a project in mind, want to collaborate, or just want to say hi? My inbox is always open.
+          Have a project in mind, want to collaborate, or just want to say hi?
+          My inbox is always open.
         </p>
+      </div>
+      <div className="mt-4 pt-2 border-t border-slate-800 items-center justify-center pb-4 mb-4">
+        <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-2">
+          Find me online
+        </h4>
+        <div className="flex items-center gap-4 justify-center">
+          <a
+            href="https://github.com/AnisJshK"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 hover:text-white border border-slate-700 transition-all text-sm font-medium"
+          >
+            <FaGithub className="text-lg" /> GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/anis-shaikh-452744332/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 hover:text-white border border-slate-700 transition-all text-sm font-medium"
+          >
+            <FaLinkedin className="text-cyan-400 text-lg" /> LinkedIn
+          </a>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -96,12 +136,16 @@ const Contact = () => {
           className="flex flex-col justify-between bg-slate-900/80 border border-slate-800/80 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-xl"
         >
           <div>
-            <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
+            <h3 className="text-xl font-bold text-white mb-6">
+              Contact Information
+            </h3>
 
             <ul className="space-y-5 text-sm sm:text-base">
               <li className="flex items-center justify-between p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
                 <div className="flex items-center gap-3 overflow-hidden">
-                  <span className="text-cyan-400 text-lg"><FaEnvelope /></span>
+                  <span className="text-cyan-400 text-lg">
+                    <FaEnvelope />
+                  </span>
                   <span className="text-slate-200 truncate">{email}</span>
                 </div>
                 <button
@@ -110,44 +154,30 @@ const Contact = () => {
                   className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors flex items-center gap-1 text-xs font-medium"
                   title="Copy email"
                 >
-                  {copied ? <FaCheck className="text-emerald-400" /> : <FaCopy />}
+                  {copied ? (
+                    <FaCheck className="text-emerald-400" />
+                  ) : (
+                    <FaCopy />
+                  )}
                 </button>
               </li>
 
               <li className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <span className="text-cyan-400 text-lg"><FaPhoneAlt /></span>
+                <span className="text-cyan-400 text-lg">
+                  <FaPhoneAlt />
+                </span>
                 <span className="text-slate-200">{phone}</span>
               </li>
 
               <li className="flex items-center gap-3 p-3 rounded-xl bg-slate-800/50 border border-slate-700/50">
-                <span className="text-cyan-400 text-lg"><FaMapMarkerAlt /></span>
-                <span className="text-slate-200">India (IST) · Open to Remote</span>
+                <span className="text-cyan-400 text-lg">
+                  <FaMapMarkerAlt />
+                </span>
+                <span className="text-slate-200">
+                  India (IST) · Open to Remote
+                </span>
               </li>
             </ul>
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-slate-800">
-            <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-400 mb-4">
-              Find me online
-            </h4>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://github.com/AnisJshK"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 hover:text-white border border-slate-700 transition-all text-sm font-medium"
-              >
-                <FaGithub className="text-lg" /> GitHub
-              </a>
-              <a
-                href="https://linkedin.com/in/your-linkedin"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-800 text-slate-200 hover:bg-slate-700 hover:text-white border border-slate-700 transition-all text-sm font-medium"
-              >
-                <FaLinkedin className="text-cyan-400 text-lg" /> LinkedIn
-              </a>
-            </div>
           </div>
         </motion.div>
 
@@ -160,7 +190,9 @@ const Contact = () => {
           className="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-xl flex flex-col justify-between"
         >
           <div>
-            <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
+            <h3 className="text-xl font-bold text-white mb-6">
+              Send a Message
+            </h3>
 
             <form onSubmit={handleSendMessage} className="space-y-4">
               <div>
