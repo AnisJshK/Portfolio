@@ -8,6 +8,31 @@ import Chatnova from '../../app/public/images/chatnova.png'
 import Tasksphere from '../../app/public/images/TaskSph.png'
 
 
+
+interface ProjectLink {
+  href: string;
+  label: string;
+  primary?: boolean;
+}
+
+interface Project {
+  title: string;
+  tagline: string;
+  description: string;
+  image: string;
+  techStack: string[];
+  features: string[];
+  links: ProjectLink[];
+}
+
+interface ProjectCardProps {
+  project: Project;
+  index: number;
+}
+
+
+
+
 // 1. Deployed Projects (2-Column Grid)
 const deployedProjects = [
   {
@@ -198,7 +223,7 @@ const Projects = () => {
 };
 
 // Reusable Project Card Sub-Component
-const ProjectCard = ({ project, index }) => {
+const ProjectCard :React.FC<ProjectCardProps>  = ({ project, index }) => {
   return (
     <motion.article
       initial={{ opacity: 0, y: 40 }}
