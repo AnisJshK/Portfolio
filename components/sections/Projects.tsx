@@ -60,7 +60,7 @@ const deployedProjects = [
     ],
     links: [
       { label: "Live Demo", href: "https://show-time-mocha.vercel.app", primary: true },
-      { label: "GitHub", href: "https://github.com/AnisJshK", primary: false },
+      { label: "GitHub", href: "https://github.com/AnisJshK/ShowTime", primary: false },
     ],
   },
   {
@@ -151,7 +151,7 @@ const repositoryProjects = [
       "Optimized pagination & filtering (`page`/`limit`) with dynamic safe-field updates and Mongoose population for user details.",
     ],
     links: [
-      { label: "View on GitHub", href: "https://github.com/AnisJshK", primary: true },
+      { label: "View on GitHub", href: "https://github.com/AnisJshK/tasksphere-backend", primary: true },
     ],
   },
 ];
