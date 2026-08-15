@@ -1,9 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  type Transition,
+  type Variants,
+  AnimatePresence,
+} from "framer-motion";
 
-const SECTIONS = [
+interface Section {
+  label: string;
+  href: string;
+  ticks: number[];
+}
+
+const SECTIONS: Section[] = [
   { label: "ABOUT", href: "#about", ticks: [8, 12, 20, 24] },
   { label: "SKILLS", href: "#skills", ticks: [12, 16, 24, 28, 36] },
   { label: "PROJECTS", href: "#projects", ticks: [12, 20, 28] },
@@ -11,11 +22,24 @@ const SECTIONS = [
   { label: "CONTACT", href: "#contact", ticks: [12, 24, 32, 40] },
 ];
 
-const springConfig = { type: "spring", stiffness: 300, damping: 25 };
+const springConfig: Transition = {
+  type: "spring",
+  stiffness: 300,
+  damping: 25,
+};
+
+interface TickProps {
+  width: number;
+}
 
 // --- Desktop Nav Components ---
 
-function Tick({ width }: { width: number }) {
+function Tick({ width }: TickProps) {
+  const tickVariants: Variants = {
+    initial: { width: `${width}px`, backgroundColor: "#3f3f46" },
+    hover: { width: "80px", backgroundColor: "#22d3ee" },
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -23,10 +47,7 @@ function Tick({ width }: { width: number }) {
       className="flex justify-end py-[4px] pr-6 cursor-pointer"
     >
       <motion.span
-        variants={{
-          initial: { width: `${width}px`, backgroundColor: "#3f3f46" },
-          hover: { width: "80px", backgroundColor: "#22d3ee" },
-        }}
+        variants={tickVariants}
         transition={springConfig}
         className="h-px block"
       />
@@ -34,7 +55,22 @@ function Tick({ width }: { width: number }) {
   );
 }
 
-function SectionRow({ label, href }: { label: string; href: string }) {
+interface SectionRowProps {
+  label: string;
+  href: string;
+}
+
+function SectionRow({ label, href }: SectionRowProps) {
+  const textVariants: Variants = {
+    initial: { color: "#71717a" },
+    hover: { color: "#22d3ee" },
+  };
+
+  const lineVariants: Variants = {
+    initial: { width: "64px", backgroundColor: "#52525b" },
+    hover: { width: "96px", backgroundColor: "#06b6d4" },
+  };
+
   return (
     <motion.a
       href={href}
@@ -43,20 +79,14 @@ function SectionRow({ label, href }: { label: string; href: string }) {
       className="flex items-center justify-end gap-3 pr-6 py-1 cursor-pointer"
     >
       <motion.span
-        variants={{
-          initial: { color: "#71717a" },
-          hover: { color: "#22d3ee" },
-        }}
+        variants={textVariants}
         transition={{ duration: 0.2 }}
         className="text-xs font-bold tracking-[0.2em] uppercase"
       >
         {label}
       </motion.span>
       <motion.span
-        variants={{
-          initial: { width: "64px", backgroundColor: "#52525b" },
-          hover: { width: "96px", backgroundColor: "#06b6d4" },
-        }}
+        variants={lineVariants}
         transition={springConfig}
         className="h-px block"
       />
@@ -148,6 +178,11 @@ function MobileNav() {
 // --- Main Navbar Component ---
 
 export function HoverLineNav() {
+  const containerVariants: Variants = {
+    rest: { opacity: 0.2, x: 20 },
+    hover: { opacity: 1, x: 0 },
+  };
+
   return (
     <>
       {/* Desktop Navigation (Visible on lg screens >= 1024px) */}
@@ -158,10 +193,7 @@ export function HoverLineNav() {
         className="hidden lg:flex fixed right-0 top-0 h-screen w-64 flex-col justify-center z-50 pointer-events-auto"
       >
         <motion.div
-          variants={{
-            rest: { opacity: 0.2, x: 20 },
-            hover: { opacity: 1, x: 0 },
-          }}
+          variants={containerVariants}
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="flex flex-col w-full"
         >
